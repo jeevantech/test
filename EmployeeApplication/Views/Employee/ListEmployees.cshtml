@@ -1,0 +1,69 @@
+﻿@model IEnumerable<EmployeeApplication.Models.Employee.Employee>
+
+@*@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "List Employees1";
+}*@
+
+<!DOCTYPE html>
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var employee in Model) {
+        <tr>
+            <td>
+                @employee.Id
+            </td>
+            <td>
+                @employee.Name
+            </td>
+            <td>
+                @employee.Age
+            </td>
+            <td>
+                @employee.Gender
+            </td>
+            
+
+            <td>
+                @Html.DisplayFor(modelItem => employee.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => employee.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => employee.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => employee.Gender)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        //alert('hai');
+        $(document).ready(function () {
+            var ulEvent = $('#ulEventDetails');
+            alert('hai');
+            $('#btn').click(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:6600/api/Camping',
+                    dataType: 'json',
+                    success: function (data) {
+
+                        ulEvent.empty();
+                        //$.each(data, function (val) {
+                        //var Eventdetails = val.Event + ' ' + val.Name;
+                        ulEvent.append('<li>' + val.Event + '</li>')
+                        ulEvent.append('<li>' + val.Name + '</li>')
+                        ulEvent.append('<li>' + val.Date + '</li>')
+                        ulEvent.append('<li>' + val.Location + '</li>')
+                        //});
+                        alert('hai');
+                    }
+
+                });
+
+            });
+
+            $('btnClear').click(function () {
+                ulEvent.empty();
+            });
+
+        });
+
+    </script>
+    <script type="text/javascript" src="js/noty/packaged/jquery.noty.packaged.min.js">
+        noty({
+  text: 'Do you want to continue? <input id="example" type="text">',
+  buttons: [
+    {addClass: 'btn btn-primary', text: 'Ok', onClick: function($noty) {
+        // this = button element
+        // $noty = $noty element
+
+        console.log($noty.$bar.find('input#example').val());
+
+        $noty.close();
+        noty({text: 'You clicked "Ok" button', type: 'success'});
+      }
+    },
+    {addClass: 'btn btn-danger', text: 'Cancel', onClick: function($noty) {
+        $noty.close();
+        noty({text: 'You clicked "Cancel" button', type: 'error'});
+      }
+    }
+  ]
+});
+
+    </script>
+</head>
+<body>
+    <input type="button" id="btn" value="Get All Employees" />
+    <input type="button" id="btnClear" value="Clear" />
+    <ul id="ulEventDetails"></ul>
+</body>
+</html>
